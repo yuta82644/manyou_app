@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.order(create_at: :desc)
+    @tasks = Task.order(created_at: :desc)
+    # @tasks = Task.all
   end
 
   def new
