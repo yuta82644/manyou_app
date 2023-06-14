@@ -4,6 +4,9 @@
     <th>タイトル</th>
     <th>内容</th>
   </tr>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
 
 <% @tasks.each do |task| %>
 

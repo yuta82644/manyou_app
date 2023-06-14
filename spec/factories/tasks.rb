@@ -4,4 +4,8 @@ FactoryBot.define do
     title { 'test_title' }
     content { 'test_content' }
   end
+  factory :second_task, class: Task do
+    title {'Factotで作ったデフォルトのタイトル2'}
+    content {' Factoyで作ったデフォルトのコンテンツ2'}
+  end
 end
