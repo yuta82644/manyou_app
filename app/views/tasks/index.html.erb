@@ -1,21 +1,22 @@
 <h1>一覧</h1>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
 <table>
   <tr>
     <th>タイトル</th>
     <th>内容</th>
   </tr>
-  <div class="notice">
-    <%= flash[:notice] %>
-  </div>
 
 <% @tasks.each do |task| %>
 
-  <tr>
+  <tr class="task_row">
     <td><%= task.title %></td>
     <td><%= task.content %></td>
+      <td><%= task.created_at %></td>
     <td><%= link_to 'show', task_path(task.id) %></td>
     <td><%= link_to 'edit', edit_task_path(task.id) %></td>
-    <td><%= link_to 'deleat', task_path(task.id), method: :delete ,data: { confirm: 'OK?'} %></td>
+    <td><%= link_to 'delete', task_path(task.id), method: :delete ,data: { confirm: 'OK?'} %></td>
 
   </tr>
 
