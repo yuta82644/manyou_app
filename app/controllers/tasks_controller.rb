@@ -3,6 +3,7 @@ class TasksController < ApplicationController
     @tasks = Task.order(created_at: :desc)
 
     # @tasks = Task.all
+    # 
   end
 
   def new
