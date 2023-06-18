@@ -1,9 +1,13 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.order(created_at: :desc)
-
-    # @tasks = Task.all
-    # 
+    @tasks = Task.all
+    if params[:sort_expired]
+      @tasks = Task.order(end_time: :desc)
+    # elsif params[:sort_created]
+    #   @tasks = Task.order(created_at: :desc)
+    else
+      @tasks = @tasks.order(created_at: :desc)
+    end
   end
 
   def new
@@ -13,7 +17,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     if @task.save
-      redirect_to new_task_path, notice: "タスクを作成しました"
+      redirect_to tasks_path, notice: "タスクを作成しました"
     else
       render :new
     end
@@ -45,6 +49,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content)
+    params.require(:task).permit(:title, :content, :end_time)
   end
 end

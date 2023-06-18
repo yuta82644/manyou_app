@@ -6,22 +6,26 @@
   <tr>
     <th>タイトル</th>
     <th>内容</th>
+    <th>作成</th>
+    <th>終了</th>
   </tr>
 
 <% @tasks.each do |task| %>
-
   <tr class="task_row">
     <td><%= task.title %></td>
     <td><%= task.content %></td>
-      <td><%= task.created_at %></td>
+<td><%= task.created_at %></td>
+      <td><%= task.end_time %> </td>
     <td><%= link_to 'show', task_path(task.id) %></td>
     <td><%= link_to 'edit', edit_task_path(task.id) %></td>
     <td><%= link_to 'delete', task_path(task.id), method: :delete ,data: { confirm: 'OK?'} %></td>
 
   </tr>
 
-<% end%>
+<% end %>
 
   </table>
+<%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
+<%= link_to "制作順でソートする", tasks_path(sort_created: "true") %>
 
   <%= link_to 'タスク作成', new_task_path %>
