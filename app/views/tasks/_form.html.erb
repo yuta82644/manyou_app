@@ -21,7 +21,15 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  <div class="task_time">
+     <%= form.label :end_time %>
+     <%= form.date_field :end_time, prompt: { day: '日', month: '月',hour: '時', mitnte: '分' } %>
+    </div>
+  <div>
+      <td><%= form.label :status %></td>
+      <td><%= form.select :status, options_for_select(["未着手","着手中","完了"], @task.status), prompt: '選択してください'%></td>
   <%= form.submit %>
+  </div>
 <% end %>
 
 <%= link_to "タスク一覧画面へ", tasks_path %>

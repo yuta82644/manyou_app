@@ -14,8 +14,15 @@
   <tr class="task_row">
     <td><%= task.title %></td>
     <td><%= task.content %></td>
-<td><%= task.created_at %></td>
-      <td><%= task.end_time %> </td>
+    <td><%= task.created_at.strftime('%m月%d日 %H:%M') %></td>
+    <td><%= task.end_time.strftime('%m月%d日 %H:%M') %> </td>
+    <%#日付の表示変更%>
+
+<td><%= form_with(model: task, local: true) do |form| %>
+    <%= form.select :status, options_for_select(["未着手", "着手中", "完了"], task.status), prompt: '選択してください' %></td>
+    <%# 自動的に送信 %>
+  <% end %>
+
     <td><%= link_to 'show', task_path(task.id) %></td>
     <td><%= link_to 'edit', edit_task_path(task.id) %></td>
     <td><%= link_to 'delete', task_path(task.id), method: :delete ,data: { confirm: 'OK?'} %></td>
@@ -24,7 +31,10 @@
 
 <% end %>
 
+
+
   </table>
+  
 <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
 <%= link_to "制作順でソートする", tasks_path(sort_created: "true") %>
 
