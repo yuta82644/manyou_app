@@ -2,15 +2,19 @@
   <div class="notice">
     <%= flash[:notice] %>
   </div>
+  <div class="wrapper">
 <table>
-  <tr>
+
     <th>タイトル</th>
     <th>内容</th>
     <th>作成</th>
     <th>終了</th>
     <th>ステータス</th>
     <th>優先順位</th>
-  </tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  
 
 
 <% @tasks.each do |task| %>
@@ -22,33 +26,32 @@
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
 
-    <td><%= link_to 'show', task_path(task.id) %></td>
-    <td><%= link_to 'edit', edit_task_path(task.id) %></td>
-    <td><%= link_to 'delete', task_path(task.id), method: :delete ,data: { confirm: 'OK?'} %></td>
-
+    <td><%= link_to 'show', task_path(task.id), class:"btn btn-outline-info btn-sm" %></td>
+    <td><%= link_to 'edit', edit_task_path(task.id), class:"btn btn-outline-info btn-sm" %></td>
+    <td><%= link_to 'delete', task_path(task.id), method: :delete ,data: { confirm: 'OK?'}, class:"btn btn-outline-info btn-sm" %></td>
   </tr>
-
 <% end %>
-
-
-
-
   </table>
+  </div>
 <%= paginate @tasks %>
 
-  <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
-  <%= link_to "制作順でソートする", tasks_path(sort_created: "true") %>
-  <%= link_to "優先順位でソート", tasks_path(sort_priority: "true") %>
-
-  <%= link_to 'タスク作成', new_task_path %>
-
+<div class="wrapper sortbtn">
+  <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true"), class: "btn btn-outline-success btn-sm" %>
+  <%= link_to "制作順でソートする", tasks_path(sort_created: "true"), class: "btn btn-outline-success btn-sm" %>
+  <%= link_to "優先順位でソート", tasks_path(sort_priority: "true"), class: "btn btn-outline-success btn-sm" %>
+</div>
+<div class="wrapper taskbtn">
+  <%= link_to 'タスク作成', new_task_path, class:"btn btn-outline-dark btn-block" %>
+</div>
+<div class="wrapper serch">
 <%= form_with(scope: :task, local: true, url: tasks_path, method: :get) do |form| %>
-  <%= form.text_field :title, placeholder: 'タイトル検索' %>
+  <%= form.text_field :title, placeholder: 'タイトル検索', class:"form-control w-100" %>
 
   
     <%# <%= form.label t('.status') %>
-    <%= form.select :status, Task.statuses.keys, { include_blank: '選択してください'} %>
+    <%= form.select :status, Task.statuses.keys, { include_blank: '選択してください'}, class:"btn btn-primary-success" %>
   
-  <%= form.submit '検索'%>
+  <%= form.submit '検索', class: 'btn btn-primary'%>
   <% end %>
+</div>
 

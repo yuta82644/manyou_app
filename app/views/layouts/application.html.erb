@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>Manyou</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,700;1,400&family=Philosopher:ital@1&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,7 +15,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+     <header class= "page_header">
+     
+     </header>
+
   <body>
+
     <%= yield %>
+    
+    <!-- ここまで -->
   </body>
 </html>

@@ -12,7 +12,7 @@
   <div class="notice">
     <%= flash[:notice] %>
   </div>
-
+<div class="wrapper">
   <div class="task_title">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -37,3 +37,4 @@
 <% end %>
 
 <%= link_to "タスク一覧画面へ", tasks_path %>
+</div>
