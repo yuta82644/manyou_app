@@ -1,11 +1,12 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @tasks = Task.all
 
     if params[:sort_expired]
       @tasks = @tasks.order(end_time: :desc)
       # elsif params[:sort_created]
-      #   @tasks = Task.order(created_at: :desc)
+    elsif params[:sort_created]
+        @tasks = @tasks.order(created_at: :desc)
     end
 
     #あいまい検索タイトル

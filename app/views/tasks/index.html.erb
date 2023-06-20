@@ -12,7 +12,7 @@
   </tr>
 
 
-<% Task.all.each do |task| %>
+<% @tasks.each do |task| %>
   <tr class="task_row">
     <td><%= task.title %></td>
     <td><%= task.content %></td>
@@ -49,25 +49,3 @@
   <%= form.submit '検索'%>
   <% end %>
 
-<% if @tasks.present? %>
-    <h2>検索結果</h2>
-  <table>
-    <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-      <th>ステータス</th>
-    </tr>
-
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= task.status %></td>
-
-      </tr>
-
-  <% end %>
-    </table>
-  <% else %>
-    <p>該当するタスクはありません。</p>
-<% end %>
