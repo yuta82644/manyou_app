@@ -1,12 +1,19 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: :desc)
+
     if params[:sort_expired]
-      @tasks = Task.order(end_time: :desc)
-    # elsif params[:sort_created]
-    #   @tasks = Task.order(created_at: :desc)
-    else
-      @tasks = @tasks.order(created_at: :desc)
+      @tasks = @tasks.order(end_time: :desc)
+      # elsif params[:sort_created]
+      #   @tasks = Task.order(created_at: :desc)
+    end
+
+    #あいまい検索タイトル
+    if params[:task].present?
+      title = params[:task][:title]
+      status = params[:task][:status]
+      @tasks = @tasks.title_search(title) if title.present?
+      @tasks = @tasks.status_search(status) if status.present?
     end
   end
 

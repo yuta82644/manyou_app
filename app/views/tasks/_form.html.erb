@@ -27,7 +27,7 @@
     </div>
   <div>
       <td><%= form.label :status %></td>
-      <td><%= form.select :status, options_for_select(["未着手","着手中","完了"], @task.status), prompt: '選択してください'%></td>
+      <td><%= form.select :status, Task.statuses.keys, { include_blank: '選択してください'}%></td>
   <%= form.submit %>
   </div>
 <% end %>
