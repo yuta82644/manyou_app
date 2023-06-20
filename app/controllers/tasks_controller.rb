@@ -7,7 +7,9 @@ class TasksController < ApplicationController
       # elsif params[:sort_created]
     elsif params[:sort_created]
         @tasks = @tasks.order(created_at: :desc)
-    end
+    elsif params[:sort_priority]
+      @tasks = @tasks.order(priority: :desc)
+      end
 
     #あいまい検索タイトル
     if params[:task].present?
@@ -57,6 +59,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :end_time, :status)
+    params.require(:task).permit(:title, :content, :end_time, :status, :priority)
   end
 end

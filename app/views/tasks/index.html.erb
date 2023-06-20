@@ -9,6 +9,7 @@
     <th>作成</th>
     <th>終了</th>
     <th>ステータス</th>
+    <th>優先順位</th>
   </tr>
 
 
@@ -19,6 +20,7 @@
     <td><%= task.created_at.strftime('%m月%d日 %H:%M') %></td>
     <td><%= task.end_time.strftime('%m月%d日') %> </td>
     <td><%= task.status %></td>
+    <td><%= task.priority %></td>
 
     <td><%= link_to 'show', task_path(task.id) %></td>
     <td><%= link_to 'edit', edit_task_path(task.id) %></td>
@@ -36,6 +38,7 @@
 
   <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
   <%= link_to "制作順でソートする", tasks_path(sort_created: "true") %>
+  <%= link_to "優先順位でソート", tasks_path(sort_priority: "true") %>
 
   <%= link_to 'タスク作成', new_task_path %>
 

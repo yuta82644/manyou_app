@@ -26,10 +26,14 @@
      <%= form.date_field :end_time, prompt: { day: '日', month: '月',hour: '時', mitnte: '分' } %>
     </div>
   <div>
-      <td><%= form.label :status %></td>
-      <td><%= form.select :status, Task.statuses.keys, { include_blank: '選択してください'}%></td>
-  <%= form.submit %>
+    <td><%= form.label :status %></td>
+    <td><%= form.select :status, Task.statuses.keys, { include_blank: '選択してください'}%></td>
   </div>
+  <div>
+    <td><%= form.label :priority %></td>
+    <td><%= form.select :priority, Task.priorities.keys, { include_blank: '選択してください' } %></td>
+  </div>
+  <%= form.submit %>
 <% end %>
 
 <%= link_to "タスク一覧画面へ", tasks_path %>
