@@ -18,6 +18,7 @@ class TasksController < ApplicationController
       @tasks = @tasks.title_search(title) if title.present?
       @tasks = @tasks.status_search(status) if status.present?
     end
+    @tasks = @tasks.page(params[:page]).per(4)
   end
 
   def new

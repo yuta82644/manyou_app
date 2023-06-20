@@ -34,7 +34,7 @@
 
 
   </table>
-
+<%= paginate @tasks %>
 
   <%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %>
   <%= link_to "制作順でソートする", tasks_path(sort_created: "true") %>
