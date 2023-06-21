@@ -12,23 +12,23 @@
 
 <%= form_with(model: [:admin, @user], local: true) do |form| %>
 <div class="user_name">
-      <%= form.label :名前 %>
+      <%= form.label "名前" %>
       <%= form.text_field :name %>
     </div>
     <div class="user_email">
-      <%= form.label :メールアドレス %>
+      <%= form.label "メールアドレス" %>
       <%= form.text_field :email %>
     </div>
     <div class="user_email">
-      <%= form.label :管理者権限%>
+      <%= form.label "管理者権限" %>
       <%= form.select :admin, [["一般ユーザー","false"],["管理者ユーザー","true"]] %>
     </div>
     <div class="user_password">
-      <%= form.label :パスワード %>
+      <%= form.label "パスワード" %>
       <%= form.text_field :password %>
     </div>
     <div class="user_password_confirmation">
-      <%= form.label :確認用パスワード %>
+      <%= form.label "確認用パスワード" %>
       <%= form.text_field :password_confirmation%>
     </div>
     <%= form.submit "登録" %>

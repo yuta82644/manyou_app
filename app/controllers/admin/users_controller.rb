@@ -1,10 +1,12 @@
 class Admin::UsersController < ApplicationController
+  before_action :if_not_admin
+
   def index
     @users = User.all.includes(:tasks) #n1問題
   end
 
   def create
-    @user = User.new(user_pramas)
+    @user = User.new(user_params)
     if @user.save
       redirect_to admin_users_path
     else
@@ -32,7 +34,6 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
   end
 
   def destroy
@@ -45,8 +46,19 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation,
+      :admin,
+    )
   end
 
-  
+  def if_not_admin
+    unless current_user.admin?
+      flash[:notice] = "アクセスできません"
+      redirect_to tasks_path
+    end
+  end
 end
