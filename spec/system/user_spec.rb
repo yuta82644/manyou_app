@@ -77,6 +77,48 @@ RSpec.describe "ユーザー管理", type: :system do
         sleep(3)
       end
     end
+
+    context "一般ユーザが管理画面にログインした場合" do
+      it "タスク一覧画面に遷移する" do
+        visit new_session_path
+        fill_in "session_email", with: "normal@dic.com"
+        fill_in "session_password", with: "111111"
+        click_on "Log in"
+        visit admin_users_path
+        sleep(2)
+        expect(current_path).not_to eq admin_users_path
+      end
+    end
+    context "管理ユーザがユーザの新規登録をした場合" do
+      it "ユーザ一覧画面に新規ユーザが表示される" do
+        visit new_session_path
+        fill_in "session_email", with: "admin@dic.com"
+        fill_in "session_password", with: "222222"
+        click_on "Log in"
+        visit new_admin_user_path
+        fill_in "user_name", with: "たかはし"
+        fill_in "user_email", with: "takahashi@dic.com"
+        select "管理者ユーザー", from: :"user[admin]"
+        fill_in "user_password", with: "takahashi@dic.com"
+        fill_in "user_password_confirmation", with: "takahashi@dic.com"
+        click_on "登録"
+        sleep(3)
+        visit admin_users_path
+        expect(page).to have_content "たかはし"
+        expect(page).to have_content "takahashi@dic.com"
+      end
+    end
+
+    context '管理ユーザがユーザの詳細画面にアクセスした場合' do
+      it 'ユーザ詳細画面が表示される' do
+        visit new_session_path
+        fill_in 'session_email', with: 'admin@dic.com'
+        fill_in 'session_password', with: '222222'
+        click_on "Log in"
+        visit admin_users_path
+        expect(current_path).to eq admin_users_path
+      end  
+    end
     context "管理ユーザが編集画面からユーザを編集した場合" do
       it "ユーザの情報が変更される" do
         visit new_session_path
@@ -97,7 +139,7 @@ RSpec.describe "ユーザー管理", type: :system do
         expect(page).to have_content user.name
       end
     end
-    
+
     context "管理ユーザがユーザを削除した場合" do
       it "ユーザ一覧画面にそのユーザが表示されない" do
         sleep(3)
