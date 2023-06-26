@@ -48,3 +48,4 @@ gem 'net-pop'
 
 gem 'kaminari'
 
+gem 'bcrypt'

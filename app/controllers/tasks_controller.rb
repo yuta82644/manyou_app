@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
-
+    # @tasks = Task.all
+    @tasks = current_user.tasks
+      #ログインしているユーザーだけ表示
     if params[:sort_expired]
       @tasks = @tasks.order(end_time: :desc)
       # elsif params[:sort_created]
@@ -27,6 +28,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to tasks_path, notice: "タスクを作成しました"
     else

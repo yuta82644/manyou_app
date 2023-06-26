@@ -97,7 +97,7 @@ RSpec.describe "タスク管理機能", type: :system do
       it "検索キーワードをタイトルに含み、かつステータスに完全一致するタスク絞り込まれる" do
         task1 = FactoryBot.create(:task, title: "いぬ")
         task2 = FactoryBot.create(:task, title: "ねこ")
-        task3 = FactoryBot.create(:task, title: "とり")
+        task3 = FactoryBot.create(:task, title: "馬")
         task4 = FactoryBot.create(:task, status: 0)
         task5 = FactoryBot.create(:task, status: 1)
         task6 = FactoryBot.create(:task, status: 2)
