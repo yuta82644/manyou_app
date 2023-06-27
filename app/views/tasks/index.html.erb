@@ -11,6 +11,7 @@
     <th>終了</th>
     <th>ステータス</th>
     <th>優先順位</th>
+    <th>ラベル</th>
     <th>制作者</th>
     <th></th>
     <th></th>
@@ -26,10 +27,12 @@
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
   <td> <% task.labels.each do |label| %>
+    
     <%= label.label_name %>
     
-    <% end %></td>
-
+    
+  <% end %>
+</td>
     <td><%= task.user.name %></td>
 
     <td><%= link_to 'show', task_path(task.id), class:"btn btn-outline-info btn-sm" %></td>

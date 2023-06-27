@@ -5,18 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(
-  name: "管理者",
-  email: "admin@example.com",
-  password: "admin@example.com",
-  password_confirmation: "admin@example.com",
-  admin: true
-)
 
 labels = [
-  { label_name: 'ラベル１'},
-  { label_name: 'ラベル２'},
-  { label_name: 'ラベル３'},
-
-
+  { label_name: 'label1'},
+  { label_name: 'label2'},
+  { label_name: 'label3'},
 ]
+
+labels.each do |label|
+  Label.create!(label)
+end
