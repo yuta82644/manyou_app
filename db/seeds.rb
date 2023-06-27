@@ -110,9 +110,9 @@
 # )
  User.create!(
   name: "管理者",
-  email: "admin@example.com",
-  password: "admin@example.com",
-  password_confirmation: "admin@example.com",
+  email: "admin@example2.com",
+  password: "admin@example2.com",
+  password_confirmation: "admin@example2.com",
   admin: true
  )
 
@@ -128,7 +128,7 @@ User.create(name: 'seed9', email: 'seed9@gmail.com', password: 'seed1@gmail.com'
 User.create(name: 'seed10', email: 'seed10@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
 
 10.times do |i|
-    Task.create!(title: "タイトル", content: "ジンジャーエール", deadline: "2023-03-01", priority: "低", status: "未着手", user_id: 7)
+    Task.create!(title: "タイトル", content: "ジンジャーエール", end_time: "2023-06-30", priority: "低", status: "未着手", user_id: 2)
   end
 
 labels = Label.all
