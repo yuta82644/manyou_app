@@ -25,6 +25,11 @@
     <td><%= task.end_time.strftime('%m月%d日') %> </td>
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
+  <td> <% task.labels.each do |label| %>
+    <%= label.label_name %>
+    
+    <% end %></td>
+
     <td><%= task.user.name %></td>
 
     <td><%= link_to 'show', task_path(task.id), class:"btn btn-outline-info btn-sm" %></td>

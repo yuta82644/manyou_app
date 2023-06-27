@@ -12,3 +12,11 @@ User.create!(
   password_confirmation: "admin@example.com",
   admin: true
 )
+
+labels = [
+  { label_name: 'ラベル１'},
+  { label_name: 'ラベル２'},
+  { label_name: 'ラベル３'},
+
+
+]
