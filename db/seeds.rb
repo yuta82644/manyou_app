@@ -26,12 +26,10 @@ labels.each do |label|
 end
 
 10.times do |i|
-  Task.create!(title: "タイトル", content: "はれ", end_time: "2023-06-01", priority: "低", status: "完了", user_id: User.first)
+  Task.create!(title: "タイトル", content: "はれ", end_time: "2023-06-01", priority: "低", status: "完了", user_id: 3)
 end
 
-10.times do |i|
-  Task.create!(title: "タイトル", content: "あめ", end_time: "2023-06-01", priority: "高", status: "未着手", user_id: User.second)
-end
+
 
 User.create!(
   name: "管理者",
