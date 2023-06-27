@@ -1,14 +1,138 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# #   Character.create(name: 'Luke', movie: movies.first)
+
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-User.create!(
+
+# labels = [
+#   { label_name: 'label1'},
+#   { label_name: 'label2'},
+#   { label_name: 'label3'},
+#   { label_name: 'label4'},
+#   { label_name: 'label5'},
+#   { label_name: 'label6'},
+#   { label_name: 'label7'},
+#   { label_name: 'label8'},
+#   { label_name: 'label9'},
+#   { label_name: 'label10'},
+# ]
+
+# labels.each do |label|
+#   Label.create!(label)
+# end
+
+# 10.times do |i|
+#   Task.create!(title: "タイトル", content: "はれ", end_time: "2023-06-01", priority: "低", status: "完了", user_id: 3)
+# end
+
+
+
+# User.create!(
+#   name: "管理者",
+#   email: "2121@dic.com",
+#   password: "212121",
+#   password_confirmation: "212121",
+#   admin: true
+# )
+
+# User.create!(
+#   name: "seed1",
+#   email: "1111@dic.com",
+#   password: "111111",
+#   password_confirmation: "111111"
+# )
+
+# User.create!(
+#   name: "seed2",
+#   email: "2222@dic.com",
+#   password: "222222",
+#   password_confirmation: "222222"
+# )
+
+# User.create!(
+#   name: "seed3",
+#   email: "3333@dic.com",
+#   password: "333333",
+#   password_confirmation: "333333"
+# )
+
+# User.create!(
+#   name: "seed4",
+#   email: "4444@dic.com",
+#   password: "444444",
+#   password_confirmation: "444444"
+# )
+
+# User.create!(
+#   name: "seed5",
+#   email: "5555@dic.com",
+#   password: "555555",
+#   password_confirmation: "555555"
+# )
+
+# User.create!(
+#   name: "seed6",
+#   email: "6666@dic.com",
+#   password: "666666",
+#   password_confirmation: "666666"
+# )
+
+# User.create!(
+#   name: "seed7",
+#   email: "7777@dic.com",
+#   password: "777777",
+#   password_confirmation: "777777"
+# )
+
+# User.create!(
+#   name: "seed8",
+#   email: "8888@dic.com",
+#   password: "888888",
+#   password_confirmation: "888888"
+# )
+
+# User.create!(
+#   name: "seed9",
+#   email: "9999@dic.com",
+#   password: "999999",
+#   password_confirmation: "999999"
+# )
+
+# User.create!(
+#   name: "seed12",
+#   email: "1212@dic.com",
+#   password: "121212",
+#   password_confirmation: "121212"
+# )
+ User.create!(
   name: "管理者",
-  email: "admin@example.com",
-  password: "admin@example.com",
-  password_confirmation: "admin@example.com",
+  email: "admin@example2.com",
+  password: "admin@example2.com",
+  password_confirmation: "admin@example2.com",
   admin: true
-)
+ )
+
+User.create(name: 'seed1', email: 'seed1@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed2', email: 'seed2@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed3', email: 'seed3@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed4', email: 'seed4@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed5', email: 'seed5@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed6', email: 'seed6@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed7', email: 'seed7@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed8', email: 'seed8@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed9', email: 'seed9@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+User.create(name: 'seed10', email: 'seed10@gmail.com', password: 'seed1@gmail.com', password_confirmation: 'seed1@gmail.com')
+
+10.times do |i|
+    Task.create!(title: "タイトル", content: "ジンジャーエール", end_time: "2023-06-30", priority: "低", status: "未着手", user_id: 2)
+  end
+
+labels = Label.all
+labels = labels.map{|label| label.id}  
+10.times do |i|
+    Label.create!(label_name: "LABEL#{i+1}")
+  end

@@ -1,5 +1,13 @@
 <h1>詳細</h1>
-<p>title: <%= @task.title %></p>
-<p>content: <%= @task.content %></p>
+<p>title:   <%= @task.title %></p>
+<p>content:   <%= @task.content %></p>
+<p>status:   <%= @task.status %><p>
+  <p>優先順：    <%= @task.priority %></p>
+  <P>ラベル； <% @task.labels.each do |label| %>
+    <%= label.label_name %>
+
+  <% end %>
+
+    <p><%= @task.user.name %></p>
 
 <%= link_to '一覧へ', tasks_path, class: 'link' %>
