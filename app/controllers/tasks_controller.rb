@@ -2,24 +2,31 @@ class TasksController < ApplicationController
   def index
     # @tasks = Task.all
     @tasks = current_user.tasks
-      #ログインしているユーザーだけ表示
+    #ログインしているユーザーだけ表示
     if params[:sort_expired]
       @tasks = @tasks.order(end_time: :desc)
       # elsif params[:sort_created]
     elsif params[:sort_created]
-        @tasks = @tasks.order(created_at: :desc)
+      @tasks = @tasks.order(created_at: :desc)
     elsif params[:sort_priority]
       @tasks = @tasks.order(priority: :desc)
-      end
+    end
 
     #あいまい検索タイトル
     if params[:task].present?
       title = params[:task][:title]
       status = params[:task][:status]
+      label = params[:task][:label_ids]
+
       @tasks = @tasks.title_search(title) if title.present?
       @tasks = @tasks.status_search(status) if status.present?
+      @tasks = @tasks.label_search(label) if label.present?
     end
     @tasks = @tasks.page(params[:page]).per(4)
+    # @tasks = @tasks.joins(:labels).where(:labels).where(labels: { id: }) if params[:label_ids].present?
+    if params[:label_ids].present?
+      @tasks = @tasks.joins(:labels).where(labels: { id: params[:label_ids] })
+    end
   end
 
   def new
@@ -62,6 +69,14 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :end_time, :status, :priority, :user_id, { label_ids: []})
+    params.require(:task).permit(
+      :title,
+      :content,
+      :end_time,
+      :status,
+      :priority,
+      :user_id,
+      { label_ids: [] },
+    )
   end
 end
